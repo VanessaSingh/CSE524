@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title> Project-1 </title>
+<meta name="viewport" content="wclassth=device-wclassth, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="styles.css " />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</head>
+
+<body>
+
+  <!-- <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script src="barChart1.js"></script>
+
+  <div class ="main-div">
+    <div class = "header">
+      <h3 class = "header-style">Faculty Hiring Analysis Dashboard</h3>
+    </div>
+    <div class="pr-5 pl-5 pt-5 pb-5">
+      {/*Row 0*/}
+      <div class="row no-gutters">
+        <div class="col-md-12 mb-4">
+          <div class="card big-grid-card card-colour">
+            <div>
+              <h4>
+                Male:Female Ratio in Top 20 CS Colleges
+              </h4>
+            </div>
+            <div class="card-value pt-4">
+              <div style="height: 100vh;">
+                Hello World!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Row 1 */}
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card big-grid-card card-colour">
+            <div>
+              <h4>
+              Professors who did BS/MS/Phd/PostDoc from a US College
+              </h4>
+            </div>
+            <div class="card-value pt-4">   
+              HW!     
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card big-grid-card card-colour">
+            <div>
+              <h4>Area Prof Count</h4>
+            </div>
+            <div class="card-value pt-4">
+              
+              <div class="dropdown">
+                <button onclick="dropdnFunction()" class="dropbtn">
+                <div id="Dropdown" class="dropdown-content">
+                  <a href="javascript:makeBarChart()">Country</a>
+        
+                </div>
+                </button>
+              </div>
+              <div id="barchart-area"></div>
+              <script>
+                function dropdnFunction() {
+                    document.getElementById("Dropdown").classList.toggle("show");
+                  }
+                  window.onclick = function(event) {
+                    if (!event.target.matches('.dropbtn')) {
+                      var dropdowns = document.getElementsByClassName("dropdown-content");
+                      var i;
+                      for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                          openDropdown.classList.remove('show');
+                          
+                        }
+                      }
+                    }
+                  }
+            </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
