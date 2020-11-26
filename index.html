@@ -58,33 +58,12 @@
             </div>
             <div class="card-value pt-4">
               
-              <div class="dropdown">
-                <button onclick="dropdnFunction()" class="dropbtn">
-                <div id="Dropdown" class="dropdown-content">
-                  <a href="javascript:makeBarChart()">Country</a>
-        
-                </div>
+              <div class="barchart-card">
+                <button onclick="makeBarChart()" class="barchart-button">
                 </button>
               </div>
               <div id="barchart-area"></div>
-              <script>
-                function dropdnFunction() {
-                    document.getElementById("Dropdown").classList.toggle("show");
-                  }
-                  window.onclick = function(event) {
-                    if (!event.target.matches('.dropbtn')) {
-                      var dropdowns = document.getElementsByClassName("dropdown-content");
-                      var i;
-                      for (i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                          openDropdown.classList.remove('show');
-                          
-                        }
-                      }
-                    }
-                  }
-            </script>
+              
             </div>
           </div>
         </div>
