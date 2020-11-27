@@ -18,7 +18,28 @@ div{
   color: rgba(39, 38, 38) !important;
   border: black;
 }
+a:hover{
+  color: #FF0099;
+}
 
+.states {
+    stroke: #fff;
+    stroke-width:1px;
+}
+.states:hover{
+  opacity: .6;
+}
+
+.legendLinear text {
+    font-size: 12px;
+}
+.d3-tip {
+  line-height: 1;
+  padding: 12px;
+  background: rgba(43,43,43, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
 .header {
   background-color:rgb(2, 35, 73);
   height: 100px;
