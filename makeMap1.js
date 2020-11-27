@@ -1,69 +1,68 @@
 function makeMap() {
-  var width = 900;
-  height = 700;
 
-var tip = d3.tip()
-.attr('class', 'd3-tip')
-.offset([-5, 0])
-.html(function(d) {
-  var dataRow = countryById.get(d.properties.name);
-     if (dataRow) {
-         console.log(dataRow);
-         return dataRow.states + ": " + dataRow.mortality;
-     } else {
-         console.log("no dataRow", d);
-         return d.properties.name + ": No data.";
-     }
-})
+  var w = 900, h = 700;
+
+  var svg = d3.select('#map-area').append('svg')
+      .attr('width', w)
+      .attr('height', h);
+  
+  var color_range = d3.scale.linear().range(["#DCEDC8", "#80CBC4"]).interpolate(d3.interpolateLab);
+
+  var states_data = d3.map();
+
+  var tool_tip = d3.tip()
+  .attr('class', 'd3-tool_tip')
+  .offset([-5, 0])
+  .html(function(d) {
+      var data = states_data.get(d.properties.name);
+      if (data) {
+        var tip_msg = data.states + ": " + data.ratio + '\n' + "Male: " + data.male + '\n' + "Female: " + data.female;
+        return tip_msg;
+      } else {
+          return "No school in this state";
+      }
+      
+  })
+
+  svg.call(tool_tip);
+
+  var states_map = d3.geo.albersUsa()
+  .scale(900)
+  .translate([w / 2, h / 2]);
+
+  var path = d3.geo.path()
+  .projection(states_map);
 
 
-var svg = d3.select('#map-area').append('svg')
-  .attr('width', width)
-  .attr('height', height);
+  queue()
+      .defer(d3.json, "USA.json")
+      .defer(d3.csv, "state_gender_ratio_data.csv", setStatesData) // process
+      .await(loadStatesData);
 
-svg.call(tip);
-
-var projection = d3.geo.albersUsa()
-  .scale(900) // mess with this if you want
-  .translate([width / 2, height / 2]);
-
-var path = d3.geo.path()
-  .projection(projection);
-
-var colorScale = d3.scale.linear().range(["#D4EEFF", "#0099FF"]).interpolate(d3.interpolateLab);
-
-var countryById = d3.map();
-
-// we use queue because we have 2 data files to load.
-queue()
-  .defer(d3.json, "USA.json")
-  .defer(d3.csv, "mortality.csv", typeAndSet) // process
-  .await(loaded);
-
-function typeAndSet(d) {
-  d.mortality = +d.mortality;
-  countryById.set(d.states, d);
-  return d;
-}
+  function setStatesData(d) {
+      d.ratio = +d.ratio;
+      states_data.set(d.states, d);
+      return d;
+  }
 
 function getColor(d) {
-  var dataRow = countryById.get(d.properties.name);
-  if (dataRow) {
-      console.log(dataRow);
-      return colorScale(dataRow.mortality);
+  var data = states_data.get(d.properties.name);
+  if (data) {
+      if (data.ratio === 0) {
+        return "#330066";    
+      } else {
+            return color_range(data.ratio * 10);
+      }
+      
   } else {
-      console.log("no dataRow", d);
-      return "#ccc";
+      return "#E0F7FA";
   }
 }
 
 
-function loaded(error, usa, mortality) {
+function loadStatesData(error, usa, ratio) {
 
-  console.log(usa);
-  console.log(mortality);
-
-  colorScale.domain(d3.extent(mortality, function(d) {return d.mortality;}));
+  color_range.domain(d3.extent(ratio, function(d) {return d.ratio;}));
 
   var states = topojson.feature(usa, usa.objects.units).features;
 
@@ -73,15 +72,14 @@ function loaded(error, usa, mortality) {
       .append('path')
       .attr('class', 'states')
       .attr('d', path)
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      .on('mouseover', tool_tip.show)
+      .on('mouseout', tool_tip.hide)
       .attr('fill', function(d,i) {
-          console.log(d.properties.name);
           return getColor(d);
       })
       .append("title");
 
-  var linear = colorScale;
+  var linear = color_range;
 
   svg.append("g")
     .attr("class", "legendLinear")
@@ -92,8 +90,12 @@ function loaded(error, usa, mortality) {
     .orient('horizontal')
     .scale(linear);
 
-  svg.select(".legendLinear")
-    .call(legendLinear);
 
+  svg.select(".legendLinear")
+    .call(legendLinear)
+    .on('click', function(d, i){
+      // alert("hey");
+      legendLinear.filter(legendLinear => legendLinear !== d).style('opacity', 0.5);
+    });
 }
 }
