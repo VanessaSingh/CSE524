@@ -36,7 +36,8 @@ function makeBarChart(){
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", "-.2em")
-            .attr("transform", "rotate(-90)" );
+            .style("font-size", ".8rem")
+            .attr("transform", "rotate(-45)" );
         
         svg.append("g")
             .attr("class", "y axis")
@@ -50,7 +51,7 @@ function makeBarChart(){
       svg.selectAll("bar")
           .data(data)
         .enter().append("rect")
-          .style("fill", "steelblue")
+          .style("fill", "#1B4F72")
           .attr("x", function(d) { return x(d.Area); })
           .attr("width", x.rangeBand())
           .attr("y", function(d) { return y(d.Prof_Count); })

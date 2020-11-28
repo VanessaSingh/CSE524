@@ -56,8 +56,6 @@ a:hover{
   padding-left: 10px;
 }
 
-
-
 .grid-card {
   display: flex;
   flex-grow: 1;
@@ -133,4 +131,12 @@ a:hover{
 .full-height.border-left, .full-height.border-right {
   border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+ .x.axis {
+   stroke: green;
+ }
+
+ .y.axis {
+  stroke: green;
 }

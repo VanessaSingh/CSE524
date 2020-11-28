@@ -4,16 +4,17 @@ d3.csv("area_gender_count.csv", function(data) {
 
 var margin = {top: 10, right: 160, bottom: 150, left: 30};
 
-var width = 960 - margin.left - margin.right,
+var width = 1500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var svg = d3.select("#stacked-bar-chart-area")
   .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
+  .attr("width", width + margin.left + margin.right + 10)
+  .attr("height", height + margin.top + margin.bottom + 10)
   .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  .style("display", "block")
+  .style("margin", "auto");
 // Transpose the data into layers
 var dataset = d3.layout.stack()(["Male", "Female"].map(function(gender) {
   return data.map(function(d) {
@@ -25,13 +26,13 @@ var dataset = d3.layout.stack()(["Male", "Female"].map(function(gender) {
 // Set x, y and colors
 var x = d3.scale.ordinal()
   .domain(dataset[0].map(function(d) { return d.x; }))
-  .rangeRoundBands([10, width-10], 0.02);
+  .rangeRoundBands([10, width-10], 0.5);
 
 var y = d3.scale.linear()
   .domain([0, d3.max(dataset, function(d) {  return d3.max(d, function(d) { return d.y0 + d.y; });  })])
   .range([height, 0]);
 
-var colors = ["b33040", "#d25c4d"];
+var colors = ["#1B4F72", "#239B56"];
 
 
 // Define and draw axes
@@ -57,9 +58,10 @@ svg.append("g")
   .call(xAxis)
   .selectAll("text")
         .style("text-anchor", "end")
+        .style("font-size", "0.8rem")
         .attr("dx", "-.8em")
         .attr("dy", "-.2em")
-        .attr("transform", "rotate(-90)" );
+        .attr("transform", "rotate(-60)" );
 
 
 // Create groups for each series, rects for each segment 
@@ -68,6 +70,7 @@ var groups = svg.selectAll("g.cost")
   .enter().append("g")
   .attr("class", "cost")
   .style("fill", function(d, i) { return colors[i]; });
+  
 
 var rect = groups.selectAll("rect")
   .data(function(d) { return d; })
@@ -77,14 +80,29 @@ var rect = groups.selectAll("rect")
   .attr("y", function(d) { return y(d.y0 + d.y); })
   .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); })
   .attr("width", x.rangeBand())
-  .on("mouseover", function() { tooltip.style("display", null); })
-  .on("mouseout", function() { tooltip.style("display", "none"); })
-  .on("mousemove", function(d) {
-    var xPosition = d3.mouse(this)[0] - 15;
-    var yPosition = d3.mouse(this)[1] - 25;
-    tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-    tooltip.select("text").text(d.y);
-  });
+  .attr("colour", function(d, i) { return colors[i]; })
+  .on("mouseover", function() { 
+    var xPos = +d3.select(this).attr("x")
+    var wid = +d3.select(this).attr("width");
+        d3.select(this)
+        .attr("x", xPos - 5)
+        .attr("width", wid + 10);
+    tooltip.style("display", null); 
+    })
+  .on("mouseout", function() { 
+    var xPos = +d3.select(this).attr("x")
+    var wid = +d3.select(this).attr("width");
+        d3.select(this)
+        .attr("x", xPos + 5)
+        .attr("width", wid - 10);
+    tooltip.style("display", "none");
+   });
+  // .on("mousemove", function(d) {
+  //   var xPosition = d3.mouse(this)[0] - 15;
+  //   var yPosition = d3.mouse(this)[1] - 25;
+  //   tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+  //   tooltip.select("text").text(d.y);
+  //});
 
 
 var legend = svg.selectAll(".legend")
@@ -113,21 +131,23 @@ legend.append("text")
 
 
 // Prep the tooltip bits, initial display is hidden
-var tooltip = svg.append("g")
-  .attr("class", "tooltip")
-  .style("display", "none");
+// var tooltip = svg.append("g")
+//   .attr("class", "tooltip")
+//   .style("display", "none");
     
-tooltip.append("rect")
-  .attr("width", 30)
-  .attr("height", 20)
-  .attr("fill", "white")
-  .style("opacity", 0.5);
+// tooltip.append("rect")
+//   .attr("width", 30)
+//   .attr("height", 20)
+//   .attr("fill", "white")
+//   .style("opacity", 0.5);
 
-tooltip.append("text")
-  .attr("x", 15)
-  .attr("dy", "1.2em")
-  .style("text-anchor", "middle")
-  .attr("font-size", "12px")
-  .attr("font-weight", "bold");
+// tooltip.append("text")
+//   .attr("x", 15)
+//   .attr("dy", "1.2em")
+//   .style("text-anchor", "middle")
+//   .attr("font-size", "12px")
+//   .attr("font-weight", "bold");
+
+
 });
 }
