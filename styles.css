@@ -96,7 +96,7 @@ a:hover{
 }
 
 .card-colour {
-  background: rgb(230, 235, 240) !important;
+  /* background: rgb(230, 235, 240) !important; */
   border-color: rgb(255,255, 255);
   background-color: aqua;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -142,7 +142,7 @@ a:hover{
 
 .y.axis text {
   fill: rgb(61, 60, 60);
- font-weight: bold;
+  font-weight: bold;
 }
 
 

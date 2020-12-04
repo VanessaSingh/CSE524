@@ -1,25 +1,26 @@
 function makeMap() {
 
-  var w = 900, h = 700;
+  var w = 1700, h = 500;
 
   var svg = d3.select('#map-area').append('svg')
       .attr('width', w)
       .attr('height', h);
-  
-  var color_range = d3.scale.linear().range(["#DCEDC8", "#80CBC4"]).interpolate(d3.interpolateLab);
+      
+  var color_range = d3.scale.linear().range(["#66CCCC", "#99CC99"]).interpolate(d3.interpolateLab);
 
   var states_data = d3.map();
 
   var tool_tip = d3.tip()
   .attr('class', 'd3-tool_tip')
+  .attr('data-html', 'true')
   .offset([-5, 0])
   .html(function(d) {
       var data = states_data.get(d.properties.name);
       if (data) {
-        var tip_msg = data.states + ": " + data.ratio + '\n' + "Male: " + data.male + '\n' + "Female: " + data.female;
+        var tip_msg = "<b>" + data.states + ": " + (data.ratio).toFixed(2) + "</b>";
         return tip_msg;
       } else {
-          return "No school in this state";
+          return "No school data";
       }
       
   })
@@ -27,7 +28,7 @@ function makeMap() {
   svg.call(tool_tip);
 
   var states_map = d3.geo.albersUsa()
-  .scale(900)
+  .scale(1100)
   .translate([w / 2, h / 2]);
 
   var path = d3.geo.path()
@@ -49,13 +50,13 @@ function getColor(d) {
   var data = states_data.get(d.properties.name);
   if (data) {
       if (data.ratio === 0) {
-        return "#330066";    
+        return "#FFFF99";    
       } else {
             return color_range(data.ratio * 10);
       }
       
   } else {
-      return "#E0F7FA";
+      return "#EAECEE";
   }
 }
 
@@ -81,21 +82,21 @@ function loadStatesData(error, usa, ratio) {
 
   var linear = color_range;
 
-  svg.append("g")
-    .attr("class", "legendLinear")
-    .attr("transform", "translate(20,20)");
+  // svg.append("g")
+  //   .attr("class", "legendLinear")
+  //   .attr("transform", "translate(20,20)");
 
-  var legendLinear = d3.legend.color()
-    .shapeWidth(30)
-    .orient('horizontal')
-    .scale(linear);
+  // var legendLinear = d3.legend.color()
+  //   .shapeWidth(30)
+  //   .orient('horizontal')
+  //   .scale(linear);
 
 
-  svg.select(".legendLinear")
-    .call(legendLinear)
-    .on('click', function(d, i){
-      // alert("hey");
-      legendLinear.filter(legendLinear => legendLinear !== d).style('opacity', 0.5);
-    });
+  // svg.select(".legendLinear")
+  //   .call(legendLinear)
+  //   .on('click', function(d, i){
+  //     // alert("hey");
+  //     legendLinear.filter(legendLinear => legendLinear !== d).style('opacity', 0.5);
+  //   });
 }
 }
