@@ -23,9 +23,10 @@
   <script src="barChart1.js"></script>
   <script src="lineChart.js"></script>
   <script src="stackedBarChart.js"></script>
+  <script src="pieChart1.js"></script>
 </head>
 
-<body onload="makeBarChart(); makeLineChart(); makeStackedBarChart();makeMap(); ">
+<body onload="makeBarChart(); makeLineChart(); makeStackedBarChart(); makeMap(); makePieChart();">
 
   <div class="main-div">
     <div class="header">
@@ -89,15 +90,67 @@
           </div>
         </div>
       </div>
-{/*Row 3*/}
-<div class="row">
-        <div class="col-md-12 mb-4">
+      {/*Row 3*/}
+      <div class="row">
+        <div class="col-md-6 mb-4">
           <div class="card big-grid-card card-colour">
             <div>
-              <h4>Area Prof Count</h4>
+              <h4>Category Gender Count</h4>
             </div>
             <div class="card-value pt-4">
+              <style>
+                svg {
+                  width: 100%;
+                  height: 100%;
+                }
 
+                path.slice {
+                  stroke-width: 2px;
+                }
+
+                polyline {
+                  opacity: .3;
+                  stroke: black;
+                  stroke-width: 2px;
+                  fill: none;
+                }
+
+                .labelValue {
+                  font-size: 60%;
+                  opacity: .5;
+
+                }
+
+                .toolTip {
+                  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                  position: absolute;
+                  display: none;
+                  width: auto;
+                  height: auto;
+                  background: none repeat scroll 0 0 white;
+                  border: 0 none;
+                  border-radius: 8px 8px 8px 8px;
+                  box-shadow: -3px 3px 15px #888888;
+                  color: black;
+                  font: 12px sans-serif;
+                  padding: 5px;
+                  text-align: center;
+                }
+
+                text {
+                  font: 12px sans-serif;
+                }
+              </style>
+              <form>
+                <label><input type="radio" name="gender_categ_data" id="gender_categ_data" value="opt1" checked> Category 1</label>
+                <label><input type="radio" name="gender_categ_data" id="gender_categ_data" value="opt2"> Category 2</label>
+                <label><input type="radio" name="gender_categ_data" id="gender_categ_data" value="opt3"> Category 3</label>
+                <label><input type="radio" name="gender_categ_data" id="gender_categ_data" value="opt4" checked> Category 4</label>
+                <label><input type="radio" name="gender_categ_data" id="gender_categ_data" value="opt5"> Category 5</label>
+              </form>
+              <div id="pie-chart-area" style="width: 800px; height: 500px; position: relative;">
+
+              </div>
             </div>
           </div>
         </div>

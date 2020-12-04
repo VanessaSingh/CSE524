@@ -6,11 +6,13 @@ body{
   color: rgba(39, 38, 38)!important;
   background-color: rgb(223, 227, 247)!important;
   border: black;
+  position: relative;
 }
 div{
 
   line-height:0;
 }
+
 .main-div {
   font-size: 1.5 rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -133,10 +135,16 @@ a:hover{
   border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
- .x.axis {
-   stroke: green;
- }
-
- .y.axis {
-  stroke: green;
+.x.axis text {
+  fill: rgb(61, 60, 60);
+  font-weight: bold;
 }
+
+.y.axis text {
+  fill: rgb(61, 60, 60);
+ font-weight: bold;
+}
+
+
+
+
