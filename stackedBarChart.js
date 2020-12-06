@@ -32,7 +32,7 @@ var y = d3.scale.linear()
   .domain([0, d3.max(dataset, function(d) {  return d3.max(d, function(d) { return d.y0 + d.y; });  })])
   .range([height, 0]);
 
-var colors = ["#1B4F72", "#239B56"];
+var colors = ["#1B4F72", "#F1C40F"];
 
 
 // Define and draw axes

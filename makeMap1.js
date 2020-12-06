@@ -6,7 +6,7 @@ function makeMap() {
       .attr('width', w)
       .attr('height', h);
       
-  var color_range = d3.scale.linear().range(["#66CCCC", "#99CC99"]).interpolate(d3.interpolateLab);
+  var color_range = d3.scale.linear().range(["#d8ddd8", "#A2D9CE"]).interpolate(d3.interpolateLab);
 
   var states_data = d3.map();
 
@@ -37,10 +37,11 @@ function makeMap() {
 
   queue()
       .defer(d3.json, "USA.json")
-      .defer(d3.csv, "state_gender_ratio_data.csv", setStatesData) // process
+      .defer(d3.csv, "state_gender_ratio_data_normalized.csv", setStatesData) // process
       .await(loadStatesData);
 
   function setStatesData(d) {
+      d.norm_ratio = +d.norm_ratio;
       d.ratio = +d.ratio;
       states_data.set(d.states, d);
       return d;
@@ -49,11 +50,11 @@ function makeMap() {
 function getColor(d) {
   var data = states_data.get(d.properties.name);
   if (data) {
-      if (data.ratio === 0) {
-        return "#FFFF99";    
-      } else {
-            return color_range(data.ratio * 10);
-      }
+      // if (data.norm_ratio === 0) {
+      //   return "#f4d03f";    
+      // } else {
+            return color_range(data.norm_ratio * 10);
+      // }
       
   } else {
       return "#EAECEE";
@@ -61,9 +62,9 @@ function getColor(d) {
 }
 
 
-function loadStatesData(error, usa, ratio) {
+function loadStatesData(error, usa, norm_ratio) {
 
-  color_range.domain(d3.extent(ratio, function(d) {return d.ratio;}));
+  color_range.domain(d3.extent(norm_ratio, function(d) {return d.norm_ratio;}));
 
   var states = topojson.feature(usa, usa.objects.units).features;
 

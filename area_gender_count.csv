@@ -1,29 +1,29 @@
 Area,Male,Female
-Information Retrieval,7,0
+Energy Efficient Systems,0,2
+Programming Languages,61,9
 Knowledge Representation,2,0
-NLP,19,3
-Theory,1,0
-Computer Architecture,55,5
-Security,63,8
-Software Engineering,27,2
-Computer Education,21,1
-Computer Vision,33,1
-Computing,39,5
-Algorithms,122,13
-Human Computer Interaction,32,1
-AI,70,10
-Database,41,3
-Multimedia,6,2
-Modeling,2,0
-Data Analytics,11,3
-ML,29,8
-Distributed Systems,34,1
-Programming Languages,36,5
-Game Design,2,0
-Energy Efficient Systems,2,0
-Systems,51,2
-Networks,63,5
-Emerging Technology,1,0
-Computational Biology,47,0
-Graphics,42,4
-Robotics,1,0
+AI,124,31
+Networks,79,15
+Information Retrieval,8,2
+ML,51,15
+Emerging Technology,1,3
+Security,90,16
+Database,48,6
+Data Analytics,24,10
+Multimedia,8,4
+Distributed Systems,33,1
+Systems,84,12
+Computing,55,8
+Computer Architecture,86,10
+Computational Biology,62,12
+Game Design,3,0
+Algorithms,141,16
+NLP,28,8
+Graphics,59,7
+Computer Education,17,5
+Human Computer Interaction,42,10
+Robotics,8,4
+Computer Vision,44,3
+Software Engineering,46,6
+Modeling,6,1
+Theory,33,6
