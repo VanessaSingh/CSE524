@@ -71,7 +71,7 @@ function makeHorizontalBarChart() {
     }
 
     d3.csv("popular_countries_non_USA_BS.csv", type, render);
-    d3.selectAll("input")
+    d3.selectAll("#pop_country_data")
     .on("change", selectDataset);
 
     function selectDataset() {

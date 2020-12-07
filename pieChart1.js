@@ -60,19 +60,19 @@ function makePieChart() {
     ];
 
     data_categ4 = [
-        { label: "Male", value: 10 },
-        { label: "Female", value: 20 }
+        { label: "Male", value: 1 },
+        { label: "Female", value: 3 }
     ];
 
     data_categ5 = [
-        { label: "Male", value: 10 },
-        { label: "Female", value: 20 }
+        { label: "Male", value: 0 },
+        { label: "Female", value: 5 }
     ];
 
     change(data_categ1);
 
 
-    d3.selectAll("input")
+    d3.selectAll("#gender_categ_data")
         .on("change", selectDataset);
 
     function selectDataset() {

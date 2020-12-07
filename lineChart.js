@@ -66,35 +66,35 @@ function makeLineChart() {
 			.call(yAxis);
 
 		svg.append("rect")
-			.attr("x", width - 18)
+			.attr("x", width + 10)
 			.attr("width", 18)
 			.attr("height", 18)
 			.style("fill", "#1B4F72")
-			.text("Non USA");
+			.text("USA");
 
 		svg.append("text")
-			.attr("x", width + 5)
+			.attr("x", width + 30)
 			.attr("y", 9)
 			.attr("dy", ".35em")
 			.style("font-weight", "bold")
 			.style("text-anchor", "start")
-			.text("Non USA");
+			.text("USA");
 
 			svg.append("rect")
-			.attr("x", width - 18)
+			.attr("x", width + 10)
 			.attr("y", 30)
 			.attr("width", 18)
 			.attr("height", 18)
 			.style("fill", "green")
-			.text("USA");
+			.text("Non USA");
 
 		svg.append("text")
-			.attr("x", width + 5)
+			.attr("x", width + 30)
 			.attr("y", 40)
 			.attr("dy", ".35em")
 			.style("font-weight", "bold")
 			.style("text-anchor", "start")
-			.text("USA");
+			.text("Non USA");
 
 
 		// svg.append("text")
