@@ -45,28 +45,28 @@ function makePieChart() {
 
 
     data_categ1 = [
-        { label: "Male", value: 19 },
-        { label: "Female", value: 5 }
+        { label: "Male", value: 83.25 },
+        { label: "Female", value: 16.74 }
     ];
 
     data_categ2 = [
-        { label: "Male", value: 22 },
-        { label: "Female", value: 33 }
+        { label: "Male", value: 85.99},
+        { label: "Female", value: 14.00 }
     ];
 
     data_categ3 = [
-        { label: "Male", value: 10 },
-        { label: "Female", value: 20 }
+        { label: "Male", value: 80.65 },
+        { label: "Female", value: 19.34 }
     ];
 
     data_categ4 = [
-        { label: "Male", value: 1 },
-        { label: "Female", value: 3 }
+        { label: "Male", value: 88.16 },
+        { label: "Female", value: 11.83 }
     ];
 
     data_categ5 = [
-        { label: "Male", value: 0 },
-        { label: "Female", value: 5 }
+        { label: "Male", value: 81.59 },
+        { label: "Female", value: 18.40 }
     ];
 
     change(data_categ1);
