@@ -19,6 +19,10 @@ function makeBarChart(){
         x.domain(data.map(function(d) { return d.Area; }));
         y.domain([0, 135]);  //d3.max(data, function(d) {return d.Prof_Count; })
         
+        var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-5, 0]);
+    
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom");
@@ -47,7 +51,8 @@ function makeBarChart(){
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end");
-    
+        svg.call(tip);
+
       svg.selectAll("bar")
           .data(data)
         .enter().append("rect")
@@ -55,8 +60,24 @@ function makeBarChart(){
           .attr("x", function(d) { return x(d.Area); })
           .attr("width", x.rangeBand())
           .attr("y", function(d) { return y(d.Prof_Count); })
-          .attr("height", function(d) { return height - y(d.Prof_Count); });
-    
+          .attr("height", function(d) { return height - y(d.Prof_Count); })
+          .on("mouseover", function(d){
+            d3.select(this).style("fill", "steelblue")
+            .attr("x", function(d) { return x(d.Area); })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) { return y(d.Prof_Count); })
+            .attr("height", function(d) {return (height - y(d.Prof_Count)); }) 
+            tip.html( "<span style='color:white'>" + d.Prof_Count + "</span>");
+            tip.show(); 
+            })
+        .on("mouseout", function(d){
+            d3.select(this).style("fill",'#1B4F72')
+            .attr("x", function(d) { return x(d.Area); })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) { return y(d.Prof_Count); })
+            .attr("height", function(d) {return (height - y(d.Prof_Count)); })
+            tip.hide();  
+            });
     });
 }
 

@@ -25,9 +25,11 @@
   <script src="stackedBarChart.js"></script>
   <script src="pieChart1.js"></script>
   <script src="HorizontalBarChart1.js"></script>
+  <script src="parallel.js"></script>
+  <script src="lollipopChart1.js"></script>
 </head>
 
-<body onload="makeBarChart(); makeLineChart(); makeStackedBarChart(); makeMap(); makePieChart(); makeHorizontalBarChart();">
+<body onload="makeBarChart(); makeLineChart(); makeStackedBarChart(); makeMap(); makePieChart(); makeHorizontalBarChart();makeParallel();makeLollipopChart();">
 
   <div class="main-div">
     <div class="header">
@@ -71,22 +73,22 @@
               <h4>Area Prof Count</h4>
             </div>
             <div class="card-value pt-4">
-              <div id="barchart-area" style="padding-left: 20px;"></div>
+              <div id="lollipop-chart-area" style="padding-left: 120px;"></div>
             </div>
           </div>
         </div>
       </div>
       {/* Row 2 */}
       <div class="row">
-        <div class="col-md-12 mb-4">
+        <div class="col-md-12 mb-4" >
           <div class="card big-grid-card card-colour">
             <div>
               <h4>
                 Professors who did BS/MS/Phd/PostDoc from a US College
               </h4>
             </div>
-            <div class="card-value pt-4">
-              <div id="stacked-bar-chart-area" style="padding-left: 180px;"></div>
+            <div class="card-value pt-4"  style="height: 70vh;">
+              <div id="stacked-bar-chart-area" style="padding-left: 180px;height: 60vh;"></div>
             </div>
           </div>
         </div>
@@ -172,6 +174,31 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card big-grid-card card-colour"style="height: 120vh">
+              <div>
+                <h4>Category Gender Count</h4>
+              </div>
+              <div class="card-value pt-4" >
+
+                <div id="pc-area" style="position: relative;padding-left: 50px;">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card big-grid-card card-colour">
+              <div>
+                <h4>Area Prof Count</h4>
+              </div>
+              <div class="card-value pt-4">
+                <div id="barchart-area" style="padding-left: 20px;"></div>
+              </div>
+            </div>
+          </div>
+          </div>
       </div>
     </div>
   </div>

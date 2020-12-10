@@ -2,7 +2,7 @@ function makeStackedBarChart(){
 d3.selectAll("svg").remove();
 d3.csv("area_gender_count.csv", function(data) {
 
-var margin = {top: 10, right: 160, bottom: 150, left: 30};
+var margin = {top: 5, right: 160, bottom: 150, left: 30};
 
 var width = 1500 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -58,7 +58,7 @@ svg.append("g")
   .call(xAxis)
   .selectAll("text")
         .style("text-anchor", "end")
-        .style("font-size", "0.8rem")
+        .style("font-size", "0.7rem")
         .attr("dx", "-.8em")
         .attr("dy", "-.2em")
         .attr("transform", "rotate(-60)" );
