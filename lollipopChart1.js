@@ -148,14 +148,6 @@ function makeLollipopChart() {
                  .attr("font-weight", "bold")
        .attr("fill", "black");
 
-//         var textLabels = text
-// 3                 .attr("x", function(d) { return d.cx; })
-// 4                 .attr("y", function(d) { return d.cy; })
-// 5                 .text( function (d) { return "( " + d.cx + ", " + d.cy +" )"; })
-// 6                 .attr("font-family", "sans-serif")
-// 7                 .attr("font-size", "20px")
-// 8                 .attr("fill", "red");
-
     svg.append("g")
         .attr("class", "x axis")
         .call(xAxis);

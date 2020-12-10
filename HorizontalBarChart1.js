@@ -5,8 +5,6 @@ function makeHorizontalBarChart() {
 
     var xColumn = "Count";
     var yColumn = "Country";
-    // var xAxisLabelText = "Population";
-    // var xAxisLabelOffset = 75;
 
     var width  = 600;
     var height = 410;
@@ -20,12 +18,6 @@ function makeHorizontalBarChart() {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       
-    // var xAxisLabel = xAxisG.append("text")
-    //   .style("text-anchor", "middle")
-    //   .attr("x", width / 2)
-    //   .attr("y", xAxisLabelOffset)
-    //   .attr("class", "label")
-    //   .text(xAxisLabelText);
     var yAxisG = g.append("g")
       .attr("class", "y axis");
 
@@ -39,6 +31,11 @@ function makeHorizontalBarChart() {
     var yAxis = d3.svg.axis().scale(yScale).orient("left")
       .outerTickSize(1);
 
+      var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-5, 0]);
+  
+
     function render(data){
 
       xScale.domain([0, d3.max(data, function (d){ return d[xColumn]; })]);
@@ -46,6 +43,8 @@ function makeHorizontalBarChart() {
 
       xAxisG.call(xAxis);
       yAxisG.call(yAxis);
+
+      svg.call(tip);
 
       var bars = g.selectAll("rect").data(data);
       bars.enter().append("rect")
@@ -55,12 +54,16 @@ function makeHorizontalBarChart() {
         .attr("y",     function (d){ return yScale(d[yColumn]); })
         .attr("width", function (d){ return xScale(d[xColumn]); })
         .style("fill", "#1B4F72")
+        .on("mouseover", function(d){
+          tip.html( "<span style='color:white'>" + d[xColumn] + "</span>");
+          tip.show(); 
+        })
         .selectAll("text")
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", "-.2em")
             .style("font-size", ".8rem")
-            .attr("transform", "rotate(-45)" );;
+            .attr("transform", "rotate(-45)" );
       bars.exit().remove();
 
     }
