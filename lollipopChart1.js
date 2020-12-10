@@ -34,19 +34,15 @@ function makeLollipopChart() {
         .attr('class', 'd3-tip')
         .offset([-10, 0]);
 
-    // var xAxis = d3.svg.axis()
-    //     .scale(x)
-    //     .orient("top");
-
     var svg = d3.select("#lollipop-chart-area").append("svg")
         .attr("width", width)
         .attr("height", height)
         .append("g")
         .attr("transform", "translate(50,40)");
-    
+
     svg.call(tip);
 
-    
+
     x.domain([-100, 9500])
     y.domain(data.map(function (d) {
         return d.Category;
@@ -70,13 +66,13 @@ function makeLollipopChart() {
         })
         .attr("stroke", "#F1C40F")
         .attr("stroke-width", "8px")
-    .on("mouseover", function (d){
-        tip.html( "<span style='color:white'>" + "Citations: " + d.Citations + "</span>");
-        tip.show(); 
-    })
-    .on("mouseout", function (d){
-        tip.hide(); 
-    });
+        .on("mouseover", function (d) {
+            tip.html("<span style='color:white'>" + "Citations: " + d.Citations + "</span>");
+            tip.show();
+        })
+        .on("mouseout", function (d) {
+            tip.hide();
+        });
 
     svg.selectAll(".bar2")
         .data(data)
@@ -96,12 +92,12 @@ function makeLollipopChart() {
         })
         .attr("stroke", "#1B4F72")
         .attr("stroke-width", "8px")
-        .on("mouseover", function (d){
-            tip.html( "<span style='color:white'>" + "H-Index: " + d.HIndex + "</span>");
-            tip.show(); 
+        .on("mouseover", function (d) {
+            tip.html("<span style='color:white'>" + "H-Index: " + d.HIndex + "</span>");
+            tip.show();
         })
-        .on("mouseout", function (d){
-            tip.hide(); 
+        .on("mouseout", function (d) {
+            tip.hide();
         });
 
     svg.selectAll("circle1")
@@ -112,12 +108,12 @@ function makeLollipopChart() {
         .attr("cy", function (d) { return y(d.Category); })
         .attr("r", "8")
         .style("fill", "#F1C40F")
-        .on("mouseover", function (d){
-            tip.html( "<span style='color:white'>" + "Citations: " + d.Citations + "</span>");
-            tip.show(); 
+        .on("mouseover", function (d) {
+            tip.html("<span style='color:white'>" + "Citations: " + d.Citations + "</span>");
+            tip.show();
         })
-        .on("mouseout", function (d){
-            tip.hide(); 
+        .on("mouseout", function (d) {
+            tip.hide();
         });
 
     svg.selectAll("circle2")
@@ -128,33 +124,25 @@ function makeLollipopChart() {
         .attr("cy", function (d) { return y(d.Category); })
         .attr("r", "8")
         .style("fill", "#1B4F72")
-        .on("mouseover", function (d){
-            tip.html( "<span style='color:white'>" + "H-Index: " + d.HIndex + "</span>");
-            tip.show(); 
+        .on("mouseover", function (d) {
+            tip.html("<span style='color:white'>" + "H-Index: " + d.HIndex + "</span>");
+            tip.show();
         })
-        .on("mouseout", function (d){
-            tip.hide(); 
+        .on("mouseout", function (d) {
+            tip.hide();
         });
 
-        svg.selectAll("labels")
+    svg.selectAll("labels")
         .data(data)
         .enter()
         .append("text")
-        .attr("x", function (d) { return -50;})
+        .attr("x", function (d) { return -50; })
         .attr("y", function (d) { return y(d.Category); })
         .text(function (d) { return d.Category; })
         .attr("font-family", "sans-serif")
-                 .attr("font-size", "40px")
-                 .attr("font-weight", "bold")
-       .attr("fill", "black");
-
-//         var textLabels = text
-// 3                 .attr("x", function(d) { return d.cx; })
-// 4                 .attr("y", function(d) { return d.cy; })
-// 5                 .text( function (d) { return "( " + d.cx + ", " + d.cy +" )"; })
-// 6                 .attr("font-family", "sans-serif")
-// 7                 .attr("font-size", "20px")
-// 8                 .attr("fill", "red");
+        .attr("font-size", "40px")
+        .attr("font-weight", "bold")
+        .attr("fill", "black");
 
     svg.append("g")
         .attr("class", "x axis")
@@ -167,9 +155,4 @@ function makeLollipopChart() {
         .attr("x2", x(0))
         .attr("y2", height);
 
-
-    function type(d) {
-        d.Citations = +d.Citations;
-        return d;
-    }
 }

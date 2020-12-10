@@ -50,7 +50,7 @@ function makePieChart() {
     ];
 
     data_categ2 = [
-        { label: "Male", value: 85.99},
+        { label: "Male", value: 85.99 },
         { label: "Female", value: 14.00 }
     ];
 
@@ -140,8 +140,6 @@ function makePieChart() {
             .attr('y', legendRectSize - legendSpacing)
             .text(function (d) { return d; });
 
-        /* ------- TEXT LABELS -------*/
-
         var text = svg.select(".label_names").selectAll("text")
             .data(pie(data), function (d) { return d.data.label });
 
@@ -186,7 +184,6 @@ function makePieChart() {
         text.exit()
             .remove();
 
-        /* ------- SLICE TO TEXT POLYlabel_lines -------*/
 
         var polyline = svg.select(".label_lines").selectAll("polyline")
             .data(pie(data), function (d) { return d.data.label });

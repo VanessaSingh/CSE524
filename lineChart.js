@@ -1,11 +1,6 @@
 function makeLineChart() {
 
 	d3.selectAll("svg").remove();
-	// Get the data
-	// d3.csv("us_non_us_profs.csv", function(data) {
-
-
-	// Get the data
 	d3.csv("us_non_us_profs.csv", function (data) {
 		console.log(data);
 
@@ -22,11 +17,11 @@ function makeLineChart() {
 		var yAxis = d3.svg.axis().scale(y)
 			.orient("left").ticks(10);
 
-		var valueline = d3.svg.line()
+		var vals = d3.svg.line()
 			.x(function (d) { return x(d.Degree); })
 			.y(function (d) { return y(d.USA); });
 
-		var valueline2 = d3.svg.line()
+		var vals2 = d3.svg.line()
 			.x(function (d) { return x(d.Degree); })
 			.y(function (d) { return y(d.Non_USA); });
 
@@ -37,7 +32,7 @@ function makeLineChart() {
 			.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-		// Scale the range of the data
+		
 		x.domain(data.map(function (d) { return d.Degree; }));
 		// x.domain(['BS', 'MS', 'Phd', 'PostDoc']);
 		y.domain([0, d3.max(data, function (d) { return Math.max(d.USA, d.Non_USA); })]);
@@ -66,26 +61,26 @@ function makeLineChart() {
 			.attr("font-weight", "bold")
 			.attr("fill", "black");
 
-		svg.append("path")		// Add the valueline path.
+		svg.append("path")	
 			.attr("class", "line")
 			.style("stroke", "#1B4F72")
 			.style("stroke-width", "2px")
 			.style("fill", "none")
-			.attr("d", valueline(data));
+			.attr("d", vals(data));
 
-		svg.append("path")		// Add the valueline2 path.
+		svg.append("path")
 			.attr("class", "line")
 			.style("stroke", "green")
 			.style("stroke-width", "2px")
 			.style("fill", "none")
-			.attr("d", valueline2(data));
+			.attr("d", vals2(data));
 
-		svg.append("g")			// Add the X Axis
+		svg.append("g")			
 			.attr("class", "x axis")
 			.attr("transform", "translate(0," + height + ")")
 			.call(xAxis);
 
-		svg.append("g")			// Add the Y Axis
+		svg.append("g")	
 			.attr("class", "y axis")
 			.call(yAxis);
 
@@ -120,20 +115,6 @@ function makeLineChart() {
 			.style("text-anchor", "start")
 			.text("Non USA");
 
-
-		// svg.append("text")
-		// 	.attr("transform", "translate(" + (width + 3) + "," + y(data[0].USA) + ")")
-		// 	.attr("dy", "2px")
-		// 	.attr("text-anchor", "start")
-		// 	.style("fill", "green")
-		// 	.text("Non_USA");
-
-		// svg.append("text")
-		// 	.attr("transform", "translate(" + (width + 3) + "," + y(data[0].Non_USA) + ")")
-		// 	.attr("dy", "2px")
-		// 	.attr("text-anchor", "start")
-		// 	.style("fill", "#1B4F72")
-		// 	.text("USA");
 	});
 
 
