@@ -8,6 +8,11 @@ body{
   border: black;
   position: relative;
 }
+
+text {
+  font: 12px sans-serif;
+}
+
 div{
 
   line-height:0;
