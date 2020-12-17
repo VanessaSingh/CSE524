@@ -14,8 +14,8 @@ function makePieChart() {
     svg.append("g")
         .attr("class", "label_lines");
 
-    var width = 850,
-        height = 450,
+    var width = 400,
+        height = 300,
         radius = Math.min(width, height) / 2;
 
     var pie = d3.layout.pie()
@@ -69,11 +69,39 @@ function makePieChart() {
         { label: "Female", value: 18.40 }
     ];
 
+    cit_data1 = [
+        { Area: "Citations", Prof_Count: 94 },
+        { Area: "H-Index", Prof_Count: 41 }
+    ];
+
+    cit_data2 = [
+        { Area: "Citations", Prof_Count: 71 },
+        { Area: "H-Index", Prof_Count: 37 }
+    ];
+
+    cit_data3 = [
+        { Area: "Citations", Prof_Count: 51 },
+        { Area: "H-Index", Prof_Count: 31 }
+    ];
+
+    cit_data4 = [
+        { Area: "Citations", Prof_Count: 45 },
+        { Area: "H-Index", Prof_Count: 31 }
+    ];
+
+    cit_data5 = [
+        { Area: "Citations", Prof_Count: 33 },
+        { Area: "H-Index", Prof_Count: 26 }
+    ];
+
+
+
     change(data_categ1);
     d3.csv("area_gender_count1.csv", function (data) {
         makeStackedBarChart(data);
     });
-
+    makeBarChart(cit_data1);
+    
     d3.selectAll("#gender_categ_data")
         .on("change", selectDataset);
 
@@ -85,30 +113,36 @@ function makePieChart() {
             d3.csv("area_gender_count1.csv", function (data) {
                 makeStackedBarChart(data);
             });
+            makeBarChart(cit_data1);
         }
         else if (value == "opt2") {
             change(data_categ2);
             d3.csv("area_gender_count2.csv", function (data) {
                 makeStackedBarChart(data);
             });
+            makeBarChart(cit_data2);
+            
         }
         else if (value == "opt3") {
             change(data_categ3);
             d3.csv("area_gender_count3.csv", function (data) {
                 makeStackedBarChart(data);
             });
+            makeBarChart(cit_data3);
         }
         else if (value == "opt4") {
             change(data_categ4);
             d3.csv("area_gender_count4.csv", function (data) {
                 makeStackedBarChart(data);
             });
+            makeBarChart(cit_data4);
         }
         else if (value == "opt5") {
             change(data_categ5);
             d3.csv("area_gender_count5.csv", function (data) {
                 makeStackedBarChart(data);
             });
+            makeBarChart(cit_data5);
         }
     }
 

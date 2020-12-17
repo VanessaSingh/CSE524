@@ -1,7 +1,7 @@
 function makeParallel() {
     var margin = { top: 50, right: 50, bottom: 50, left: 300 },
         width = 800 - margin.left - margin.right,
-        height = 1000 - margin.top - margin.bottom;
+        height = 500 - margin.top - margin.bottom;
 
     var dimensions = [
         {

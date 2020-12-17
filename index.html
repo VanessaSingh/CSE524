@@ -25,34 +25,19 @@
 </head>
 
 <body
-  onload="makeMap(); makePieChart();makeParallel();makeLollipopChart();">
-
+  onload="makePieChart();makeParallel(); makeMap();">
   <div class="main-div">
     <div class="header">
       <h3 class="header-style">Faculty Hiring Analysis Dashboard</h3>
     </div>
-    <div class="pr-5 pl-5 pt-5 pb-5">
-      <div class="row no-gutters">
-        <div class="col-md-12 mb-4">
-          <div class="card big-grid-card card-colour">
+    <div class="pr-2 pl-2 pt-2 pb-2">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="card big-grid-card card-colour" style="height: 42vh;">
             <div>
               <h4>
-                Gender ratio in Top 50 CS colleges per state
+                Gender ratio per college category
               </h4>
-            </div>
-            <div class="card-value pt-4">
-
-              <div id="map-area"></div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card big-grid-card card-colour">
-            <div>
-              <h4>Gender ratio per college category</h4>
             </div>
             <div class="card-value pt-4">
               <style>
@@ -110,86 +95,71 @@
                 <label><input type="radio" name="gender_categ_data" id="gender_categ_data" value="opt5"> Category
                   5</label>
               </form>
-              <div id="pie-chart-area" style="width: 800px; height: 500px; position: relative;">
+              <div id="pie-chart-area" style="height: 30vh; padding-left: 50px;"></div>
 
-              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card big-grid-card card-colour">
-            <div>
-              <h4>Citations, H-Index analysis per college category</h4>
-            </div>
-            <div class="card-value pt-4">
-              <div id="lollipop-chart-area" style="padding-left: 120px;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 mb-4">
-          <div class="card big-grid-card card-colour">
+        <div class="col-md-2 mb-3">
+          <div class="card big-grid-card card-colour" style="height: 42vh;">
             <div>
               <h4>
-                Gender ratio in Top 50 CS colleges per research field
+                Citations, H-Index per college category
               </h4>
             </div>
-            <div class="card-value pt-4" style="height: 70vh;">
-              <div id="stacked-bar-chart-area" style="padding-left: 180px;height: 60vh;"></div>
+            <div class="card-value pt-4">
+
+              <div id="barchart-area" style="height: 30vh;"></div>
+
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          
-        </div>
-        <div class="col-md-6 mb-4">
-          <div class="card big-grid-card card-colour">
+        <div class="col-md-6 mb-3">
+          <div class="card big-grid-card card-colour" style="height: 42vh;">
             <div>
-              <h4>Popular countries for US professors for pursuing education levels</h4>
+              <h4>
+                Citations, H-index per college
+              </h4>
             </div>
-            <div class="card-value pt-4" style="padding-left: 25px;">
-              <form>
-                <label><input type="radio" name="pop_country_data" id="pop_country_data" value="opt1" checked>
-                  BS</label>
-                <label><input type="radio" name="pop_country_data" id="pop_country_data" value="opt2"> MS</label>
-                <label><input type="radio" name="pop_country_data" id="pop_country_data" value="opt3"> Phd</label>
-              </form>
-              <div id="horizontal-bar-chart-area"></div>
+            <div class="card-value pt-4">
+
+              <div id="pc-area"></div>
 
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card big-grid-card card-colour" style="height: 120vh">
+        <div class="col-md-6">
+          <div class="card big-grid-card card-colour" style="height: 45vh;">
             <div>
-              <h4>Citations, H-Index analysis per university</h4>
+              <h4>
+                Gender ratio per research field
+              </h4>
             </div>
             <div class="card-value pt-4">
 
-              <div id="pc-area" style="position: relative;padding-left: 50px;">
+              <div id="stacked-bar-chart-area"></div>
 
-              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-4">
-          <div class="card big-grid-card card-colour">
+        <div class="col-md-6">
+          <div class="card big-grid-card card-colour" style="height: 45vh;">
             <div>
-              <h4>Popular research fields</h4>
+              <h4>
+                Gender ratio in Top 50 CS colleges per state
+              </h4>
             </div>
             <div class="card-value pt-4">
-              <div id="barchart-area" style="padding-left: 20px;"></div>
+
+              <div id="map-area" style="padding-left: 100px; padding-top: 400px;background-color: aqua;"></div>
+
             </div>
           </div>
         </div>
+        
       </div>
-    </div>
   </div>
   </div>
-
 </body>

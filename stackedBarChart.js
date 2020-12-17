@@ -2,10 +2,10 @@ function makeStackedBarChart(data) {
 
   d3.select("#stacked-bar-chart-area").selectAll("svg").remove();
 
-    var margin = { top: 5, right: 160, bottom: 150, left: 30 };
+    var margin = { top: 2, right: 140, bottom: 150, left: 50 };
 
-    var width = 1500 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+    var width = 900 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
 
     var svg = d3.select("#stacked-bar-chart-area")
       .append("svg")
@@ -54,7 +54,7 @@ function makeStackedBarChart(data) {
       .call(xAxis)
       .selectAll("text")
       .style("text-anchor", "end")
-      .style("font-size", "0.7rem")
+      .style("font-size", "0.5rem")
       .attr("dx", "-.8em")
       .attr("dy", "-.2em")
       .attr("transform", "rotate(-60)");

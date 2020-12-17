@@ -153,6 +153,8 @@ function makeLollipopChart() {
         .append("line")
         .attr("x1", x(0))
         .attr("x2", x(0))
-        .attr("y2", height);
+        .attr("y2", height)
+        .attr("y", 6)
+      .attr("dy", ".71em");
 
 }

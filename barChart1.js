@@ -1,9 +1,14 @@
-function makeBarChart() {
-  d3.selectAll("svg").remove();
-  d3.csv("area_prof_count.csv", function (data) {
-    var margin = { top: 20, right: 20, bottom: 70, left: 40 },
-      width = 800 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+function makeBarChart(data) {
+  //d3.selectAll("svg").remove();
+  d3.select("#barchart-area").selectAll("svg").remove();
+  //d3.csv("area_prof_count.csv", function (data) {
+  //   data = [
+  //     { Area: "Male", Prof_Count: 81.59 },
+  //     { Area: "Female", Prof_Count: 18.40 }
+  // ];
+    var margin = { top: 5, right: 30, bottom: 70, left: 20 },
+      width = 300 - margin.left - margin.right,
+      height = 300 - margin.top - margin.bottom;
 
     var svg = d3.select("#barchart-area").append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -32,6 +37,8 @@ function makeBarChart() {
       .orient("left")
       .ticks(10);
 
+      var color = d3.scale.ordinal().range(["red", "green"]);
+      
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -43,20 +50,15 @@ function makeBarChart() {
       .style("font-size", ".8rem")
       .attr("transform", "rotate(-45)");
 
-    svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-      .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end");
     svg.call(tip);
 
     svg.selectAll("bar")
       .data(data)
       .enter().append("rect")
-      .style("fill", "#1B4F72")
+      // .style("fill", "#1B4F72")
+      .style("fill", function(d, i) {
+        return color(i);
+      })
       .attr("x", function (d) { return x(d.Area); })
       .attr("width", x.rangeBand())
       .attr("y", function (d) { return y(d.Prof_Count); })
@@ -67,7 +69,7 @@ function makeBarChart() {
           .attr("width", x.rangeBand())
           .attr("y", function (d) { return y(d.Prof_Count); })
           .attr("height", function (d) { return (height - y(d.Prof_Count)); })
-        tip.html("<span style='color:white'>" + d.Prof_Count + "</span>");
+        tip.html("<span style='color:whiteline'>" + d.Prof_Count + "</span>");
         tip.show();
       })
       .on("mouseout", function (d) {
@@ -78,6 +80,6 @@ function makeBarChart() {
           .attr("height", function (d) { return (height - y(d.Prof_Count)); })
         tip.hide();
       });
-  });
+  //});
 }
 

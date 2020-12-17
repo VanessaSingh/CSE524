@@ -1,6 +1,6 @@
 function makeMap() {
 
-    var w = 1700, h = 500;
+    var w = 400, h = 200;
 
     var svg = d3.select('#map-area').append('svg')
         .attr('width', w)
