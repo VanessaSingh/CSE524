@@ -1,6 +1,6 @@
-function makeStackedBarChart() {
-  d3.selectAll("svg").remove();
-  d3.csv("area_gender_count.csv", function (data) {
+function makeStackedBarChart(data) {
+
+  d3.select("#stacked-bar-chart-area").selectAll("svg").remove();
 
     var margin = { top: 5, right: 160, bottom: 150, left: 30 };
 
@@ -120,5 +120,4 @@ function makeStackedBarChart() {
       });
 
 
-  });
 }

@@ -70,27 +70,45 @@ function makePieChart() {
     ];
 
     change(data_categ1);
-
+    d3.csv("area_gender_count1.csv", function (data) {
+        makeStackedBarChart(data);
+    });
 
     d3.selectAll("#gender_categ_data")
         .on("change", selectDataset);
 
     function selectDataset() {
         var value = this.value;
+
         if (value == "opt1") {
             change(data_categ1);
+            d3.csv("area_gender_count1.csv", function (data) {
+                makeStackedBarChart(data);
+            });
         }
         else if (value == "opt2") {
             change(data_categ2);
+            d3.csv("area_gender_count2.csv", function (data) {
+                makeStackedBarChart(data);
+            });
         }
         else if (value == "opt3") {
             change(data_categ3);
+            d3.csv("area_gender_count3.csv", function (data) {
+                makeStackedBarChart(data);
+            });
         }
         else if (value == "opt4") {
             change(data_categ4);
+            d3.csv("area_gender_count4.csv", function (data) {
+                makeStackedBarChart(data);
+            });
         }
         else if (value == "opt5") {
             change(data_categ5);
+            d3.csv("area_gender_count5.csv", function (data) {
+                makeStackedBarChart(data);
+            });
         }
     }
 
