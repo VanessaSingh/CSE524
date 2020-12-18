@@ -55,7 +55,7 @@ function makeBarChart(data) {
     .attr("y", function (d) { return y(d.Prof_Count); })
     .attr("height", function (d) { return height - y(d.Prof_Count); })
     .on("mouseover", function (d) {
-      d3.select(this).style("fill", "steelblue")
+      d3.select(this).style("opacity", "0.5")
         .attr("x", function (d) { return x(d.Area); })
         .attr("width", x.rangeBand())
         .attr("y", function (d) { return y(d.Prof_Count); })
@@ -64,7 +64,7 @@ function makeBarChart(data) {
       tip.show();
     })
     .on("mouseout", function (d) {
-      d3.select(this).style("fill", '#1B4F72')
+      d3.select(this).style("opacity", "1")
         .attr("x", function (d) { return x(d.Area); })
         .attr("width", x.rangeBand())
         .attr("y", function (d) { return y(d.Prof_Count); })
@@ -123,13 +123,13 @@ function makeBarChart1(data) {
     .data(data)
     .enter().append("rect")
     .attr("id", "h-bar")
-    .style("fill", "#1B4F72")
+    .style("fill", "#F1C40F")
     .attr("x", function (d) { return x(d.Area); })
     .attr("width", x.rangeBand())
     .attr("y", function (d) { return y(d.Prof_Count); })
     .attr("height", function (d) { return height - y(d.Prof_Count); })
     .on("mouseover", function (d) {
-      d3.select(this).style("fill", "steelblue")
+      d3.select(this).style("opacity", "0.5")
         .attr("x", function (d) { return x(d.Area); })
         .attr("width", x.rangeBand())
         .attr("y", function (d) { return y(d.Prof_Count); })
@@ -138,7 +138,7 @@ function makeBarChart1(data) {
       tip.show();
     })
     .on("mouseout", function (d) {
-      d3.select(this).style("fill", '#1B4F72')
+      d3.select(this).style("opacity", "1")
         .attr("x", function (d) { return x(d.Area); })
         .attr("width", x.rangeBand())
         .attr("y", function (d) { return y(d.Prof_Count); })

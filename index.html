@@ -14,7 +14,7 @@
   <script src="//d3js.org/topojson.v1.min.js"></script>
   <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
-  <!-- <script src="makeMap1.js"></script> -->
+  <script src="makeMap1.js"></script>
   <script src="barChart1.js"></script>
   <!-- <script src="lineChart.js"></script> -->
   <script src="stackedBarChart.js"></script>
@@ -25,7 +25,7 @@
 </head>
 
 <body
-  onload="makePieChart();">
+  onload="makePieChart(); makeMap();">
   <div class="main-div">
     <div class="header">
       <h3 class="header-style">Faculty Hiring Analysis Dashboard</h3>
@@ -123,7 +123,7 @@
             </div>
             <div class="card-value pt-2">
 
-              <div id="pc-area"></div>
+              <div id="pc-area" style="padding-left: 20px;"></div>
 
             </div>
           </div>
@@ -151,9 +151,9 @@
                 Gender ratio in Top 50 CS colleges per state
               </h5>
             </div>
-            <div class="card-value pt-4">
+            <div class="card-value pt-2">
 
-              <div id="map-area" style="padding-left: 100px; padding-top: 400px;"></div>
+              <div id="map-area" style="height: 45vh;"></div>
 
             </div>
           </div>

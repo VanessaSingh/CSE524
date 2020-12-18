@@ -119,7 +119,7 @@ function makePieChart() {
         makeStackedBarChart(data);
     });
 
-    d3.csv("research_details_college.csv", function (data) {
+    d3.csv("research_details_college1.csv", function (data) {
         makeParallel(data);
     });
 

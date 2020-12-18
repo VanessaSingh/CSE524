@@ -1,10 +1,12 @@
 function makeMap() {
 
-    var w = 400, h = 200;
+    var w = 500, h = 200;
 
-    var svg = d3.select('#map-area').append('svg')
-        .attr('width', w)
-        .attr('height', h);
+    var svg = d3.select('#map-area').append('svg');
+        // .attr('width', w)
+        // .attr('height', h);
+
+    d3.select('#map-area').selectAll("svg").attr("width", "100%").attr("height", "100%");
 
     var color_range = d3.scale.linear().range(["#d8ddd8", "#A2D9CE"]).interpolate(d3.interpolateLab);
 
@@ -28,8 +30,8 @@ function makeMap() {
     svg.call(tool_tip);
 
     var states_map = d3.geo.albersUsa()
-        .scale(1100)
-        .translate([w / 2, h / 2]);
+        .scale(850)
+        .translate([450, 200]);
 
     var path = d3.geo.path()
         .projection(states_map);

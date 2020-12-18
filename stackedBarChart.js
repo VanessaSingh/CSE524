@@ -4,8 +4,8 @@ function makeStackedBarChart(data) {
 
     var margin = { top: 2, right: 140, bottom: 150, left: 50 };
 
-    var width = 900 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+    var width = 920 - margin.left - margin.right,
+      height = 420 - margin.top - margin.bottom;
 
     var svg = d3.select("#stacked-bar-chart-area")
       .append("svg")
@@ -85,10 +85,10 @@ function makeStackedBarChart(data) {
           })
           .attr("class", "labels_st")
           .attr("y", function (d) { return y(d.y0) - 5; })
-          .attr("x", function (d) { return x(d.x) - 20; })
+          .attr("x", function (d) { return x(d.x) - 10; })
           .style("fill", 'black')
           .style("padding-bottom", "1px")
-          .style("font-size", "1.5 rem");
+          .style("font-size", "0.6rem");
       })
       .on("mouseout", function (d) {
         d3.selectAll(".labels_st").remove();
