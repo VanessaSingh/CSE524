@@ -2,9 +2,12 @@ function makePieChart() {
     d3.select("input[value=\"opt1\"]").property("checked", true);
 
     var svg = d3.select("#pie-chart-area")
+    .attr("width", "100%")
+        .attr("height", "100%")    
         .append("svg")
         .append("g")
-
+        ;
+    d3.select("#pie-chart-area").selectAll("svg").attr("width", "100%").attr("height", "100%");
     svg.append("g")
         .attr("class", "slices");
     svg.append("g")
@@ -70,27 +73,42 @@ function makePieChart() {
     ];
 
     cit_data1 = [
-        { Area: "Citations", Prof_Count: 94 },
-        { Area: "H-Index", Prof_Count: 41 }
+        { Area: "Citations", Prof_Count: 9496 }
     ];
 
     cit_data2 = [
-        { Area: "Citations", Prof_Count: 71 },
-        { Area: "H-Index", Prof_Count: 37 }
+        { Area: "Citations", Prof_Count: 7126 }
     ];
 
     cit_data3 = [
-        { Area: "Citations", Prof_Count: 51 },
-        { Area: "H-Index", Prof_Count: 31 }
+        { Area: "Citations", Prof_Count: 5124 }
     ];
 
     cit_data4 = [
-        { Area: "Citations", Prof_Count: 45 },
-        { Area: "H-Index", Prof_Count: 31 }
+        { Area: "Citations", Prof_Count: 4507 }
     ];
 
     cit_data5 = [
-        { Area: "Citations", Prof_Count: 33 },
+        { Area: "Citations", Prof_Count: 3335 }
+    ];
+
+    h_data1 = [
+        { Area: "H-Index", Prof_Count: 41 }
+    ];
+
+    h_data2 = [
+        { Area: "H-Index", Prof_Count: 37 }
+    ];
+
+    h_data3 = [
+        { Area: "H-Index", Prof_Count: 31 }
+    ];
+
+    h_data4 = [
+        { Area: "H-Index", Prof_Count: 31 }
+    ];
+
+    h_data5 = [
         { Area: "H-Index", Prof_Count: 26 }
     ];
 
@@ -100,8 +118,14 @@ function makePieChart() {
     d3.csv("area_gender_count1.csv", function (data) {
         makeStackedBarChart(data);
     });
+
+    d3.csv("research_details_college.csv", function (data) {
+        makeParallel(data);
+    });
+
     makeBarChart(cit_data1);
-    
+    makeBarChart1(h_data1);
+
     d3.selectAll("#gender_categ_data")
         .on("change", selectDataset);
 
@@ -114,6 +138,10 @@ function makePieChart() {
                 makeStackedBarChart(data);
             });
             makeBarChart(cit_data1);
+            makeBarChart1(h_data1);
+            d3.csv("research_details_college1.csv", function (data) {
+                makeParallel(data);
+            });
         }
         else if (value == "opt2") {
             change(data_categ2);
@@ -121,6 +149,10 @@ function makePieChart() {
                 makeStackedBarChart(data);
             });
             makeBarChart(cit_data2);
+            makeBarChart1(h_data2);
+            d3.csv("research_details_college2.csv", function (data) {
+                makeParallel(data);
+            });
             
         }
         else if (value == "opt3") {
@@ -129,6 +161,10 @@ function makePieChart() {
                 makeStackedBarChart(data);
             });
             makeBarChart(cit_data3);
+            makeBarChart1(h_data3);
+            d3.csv("research_details_college3.csv", function (data) {
+                makeParallel(data);
+            });
         }
         else if (value == "opt4") {
             change(data_categ4);
@@ -136,6 +172,10 @@ function makePieChart() {
                 makeStackedBarChart(data);
             });
             makeBarChart(cit_data4);
+            makeBarChart1(h_data4);
+            d3.csv("research_details_college4.csv", function (data) {
+                makeParallel(data);
+            });
         }
         else if (value == "opt5") {
             change(data_categ5);
@@ -143,6 +183,10 @@ function makePieChart() {
                 makeStackedBarChart(data);
             });
             makeBarChart(cit_data5);
+            makeBarChart1(h_data5);
+            d3.csv("research_details_college5.csv", function (data) {
+                makeParallel(data);
+            });
         }
     }
 
@@ -199,7 +243,7 @@ function makePieChart() {
             .append("text")
             .attr("dy", ".35em")
             .text(function (d) {
-                return (d.data.label + ": " + d.value + "%");
+                return (d.value + "%");
             });
 
         function midAngle(d) {
@@ -229,7 +273,7 @@ function makePieChart() {
                 };
             })
             .text(function (d) {
-                return (d.data.label + ": " + d.value + "%");
+                return (d.value + "%");
             });
 
 

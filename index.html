@@ -14,18 +14,18 @@
   <script src="//d3js.org/topojson.v1.min.js"></script>
   <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
-  <script src="makeMap1.js"></script>
+  <!-- <script src="makeMap1.js"></script> -->
   <script src="barChart1.js"></script>
-  <script src="lineChart.js"></script>
+  <!-- <script src="lineChart.js"></script> -->
   <script src="stackedBarChart.js"></script>
   <script src="pieChart1.js"></script>
-  <script src="HorizontalBarChart1.js"></script>
+  <!-- <script src="HorizontalBarChart1.js"></script> -->
   <script src="parallel.js"></script>
-  <script src="lollipopChart1.js"></script>
+  <!-- <script src="lollipopChart1.js"></script> -->
 </head>
 
 <body
-  onload="makePieChart();makeParallel(); makeMap();">
+  onload="makePieChart();">
   <div class="main-div">
     <div class="header">
       <h3 class="header-style">Faculty Hiring Analysis Dashboard</h3>
@@ -35,16 +35,13 @@
         <div class="col-md-4 mb-3">
           <div class="card big-grid-card card-colour" style="height: 42vh;">
             <div>
-              <h4>
+              <h5>
                 Gender ratio per college category
-              </h4>
+              </h5>
             </div>
             <div class="card-value pt-4">
               <style>
-                svg {
-                  width: 100%;
-                  height: 100%;
-                }
+                
 
                 path.slice {
                   stroke-width: 2px;
@@ -95,7 +92,7 @@
                 <label><input type="radio" name="gender_categ_data" id="gender_categ_data" value="opt5"> Category
                   5</label>
               </form>
-              <div id="pie-chart-area" style="height: 30vh; padding-left: 50px;"></div>
+              <div id="pie-chart-area" style="height: 40vh; padding-left: 50px; " ></div>
 
             </div>
           </div>
@@ -103,13 +100,16 @@
         <div class="col-md-2 mb-3">
           <div class="card big-grid-card card-colour" style="height: 42vh;">
             <div>
-              <h4>
+              <h5>
                 Citations, H-Index per college category
-              </h4>
+              </h5>
             </div>
-            <div class="card-value pt-4">
-
-              <div id="barchart-area" style="height: 30vh;"></div>
+            
+            <div class="card-value pt-2">
+              <style>
+                
+                </style>
+              <div id="bar-cit-area" style="padding-left: 20px;"></div>
 
             </div>
           </div>
@@ -117,11 +117,11 @@
         <div class="col-md-6 mb-3">
           <div class="card big-grid-card card-colour" style="height: 42vh;">
             <div>
-              <h4>
+              <h5>
                 Citations, H-index per college
-              </h4>
+              </h5>
             </div>
-            <div class="card-value pt-4">
+            <div class="card-value pt-2">
 
               <div id="pc-area"></div>
 
@@ -133,9 +133,9 @@
         <div class="col-md-6">
           <div class="card big-grid-card card-colour" style="height: 45vh;">
             <div>
-              <h4>
+              <h5>
                 Gender ratio per research field
-              </h4>
+              </h5>
             </div>
             <div class="card-value pt-4">
 
@@ -147,13 +147,13 @@
         <div class="col-md-6">
           <div class="card big-grid-card card-colour" style="height: 45vh;">
             <div>
-              <h4>
+              <h5>
                 Gender ratio in Top 50 CS colleges per state
-              </h4>
+              </h5>
             </div>
             <div class="card-value pt-4">
 
-              <div id="map-area" style="padding-left: 100px; padding-top: 400px;background-color: aqua;"></div>
+              <div id="map-area" style="padding-left: 100px; padding-top: 400px;"></div>
 
             </div>
           </div>

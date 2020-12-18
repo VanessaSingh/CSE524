@@ -1,7 +1,8 @@
-function makeParallel() {
-    var margin = { top: 50, right: 50, bottom: 50, left: 300 },
-        width = 800 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+function makeParallel(data) {
+    d3.select("#pc-area").selectAll("svg").remove();
+    var margin = { top: 30, right: 50, bottom: 20, left: 300 },
+        width = 700 - margin.left - margin.right,
+        height = 350 - margin.top - margin.bottom;
 
     var dimensions = [
         {
@@ -39,7 +40,7 @@ function makeParallel() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv("research_details_college.csv", function (error, data) {
+    // d3.csv("research_details_college.csv", function (error, data) {
 
         dimensions.forEach(function (dimension) {
             dimension.scale.domain(dimension.type === "number"
@@ -116,7 +117,7 @@ function makeParallel() {
             .attr("width", 16)
             .attr("fill-opacity", "0.5")
             .style("fill", "grey");
-    });
+    // });
 
     function position(d) {
         var v = dragging[d.name];
